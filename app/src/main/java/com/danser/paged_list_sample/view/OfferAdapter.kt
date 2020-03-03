@@ -26,6 +26,6 @@ data class OfferViewModel(
     val payolad: FeedItem.Offer
 ): IComparableItem {
 
-    override fun id(): Any = this::class.java.simpleName
+    override fun id(): Any = title
     override fun content(): Any = this
 }

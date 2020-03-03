@@ -13,11 +13,18 @@ class FeedInteractor(
         .getItems(startPosition, pageSize)
         .mapIndexed { idx, item ->
             when {
-                idx % 5 == 4 -> listOf(item) + advertsRepo.getItems(startPosition + idx, 1)
+                idx % 4 == 3 -> listOf(item) + advertsRepo.getItems(startPosition + idx, 1)
                 else -> listOf(item)
             }
         }
         .flatten()
         .apply { Thread.sleep(300) } //emulated delay
 
+    fun removeAdvert(id: String) {
+        advertsRepo.removeAdvert(id)
+    }
+
+    fun reset() {
+        advertsRepo.reset()
+    }
 }
